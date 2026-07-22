@@ -1,7 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
-import { Headphones, HeartHandshake, Smartphone, Upload, Video } from 'lucide-react'
+import { HeartHandshake, Smartphone } from 'lucide-react'
 
+import { DominicanFlag } from '#/components/DominicanFlag'
 import { GuideTrack } from '#/components/GuideTrack'
 import { UploadDrop } from '#/components/UploadDrop'
 import { VoiceWall } from '#/components/VoiceWall'
@@ -15,35 +16,25 @@ const fadeUp = {
   transition: { duration: 0.6, ease: 'easeOut' as const },
 }
 
-const STEPS = [
-  {
-    icon: Headphones,
-    title: 'Listen',
-    body: 'Play the guide video below until the melody sits in your ear. Download it so you can sing with it anywhere.',
-  },
-  {
-    icon: Video,
-    title: 'Record',
-    body: 'Film yourself singing along — your phone camera is perfect. Wear headphones or let the track play out loud; both work.',
-  },
-  {
-    icon: Upload,
-    title: 'Upload',
-    body: 'Send us the video. We line every take up against the guide track and weave it into one performance.',
-  },
-]
-
 function Home() {
   return (
     <main>
       {/* Hero — the wall of voices */}
       <section className="relative flex min-h-svh flex-col overflow-hidden">
         <VoiceWall className="absolute inset-0 h-full w-full" />
+        {/* Dim pocket behind the headline so the type sits on darkness */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, var(--color-ink) 0%, transparent 30%, transparent 55%, var(--color-ink) 100%)',
+              'radial-gradient(ellipse 55% 45% at 50% 45%, rgba(11, 14, 26, 0.92) 0%, rgba(11, 14, 26, 0.55) 55%, transparent 78%)',
+          }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, var(--color-ink) 0%, transparent 25%, transparent 60%, var(--color-ink) 100%)',
           }}
         />
 
@@ -78,7 +69,8 @@ function Home() {
           >
             Record yourself singing along to one shared song, right on your
             phone. Every take joins a single, world-sized choir — and supports
-            the children of the Dominican Republic. 🇩🇴
+            the children of the Dominican Republic{' '}
+            <DominicanFlag className="inline-block size-[1.1em] align-[-0.15em]" />
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -106,9 +98,7 @@ function Home() {
           {...fadeUp}
           className="flex flex-col items-start gap-6 rounded-3xl border border-line bg-stage p-7 sm:flex-row sm:items-center sm:gap-8 sm:p-10"
         >
-          <span className="grid size-14 shrink-0 place-items-center rounded-full bg-stage-soft text-3xl sm:size-16">
-            🇩🇴
-          </span>
+          <DominicanFlag className="size-14 shrink-0 sm:size-16" />
           <div>
             <p className="flex items-center gap-2 text-sm font-medium tracking-wide text-gold uppercase">
               <HeartHandshake className="size-4" />
@@ -122,37 +112,18 @@ function Home() {
         </motion.div>
       </section>
 
-      {/* How it works — a real sequence, so the numbers mean something */}
-      <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-10 sm:py-20">
+      {/* It's easy */}
+      <section className="mx-auto w-full max-w-5xl px-5 py-16 text-center sm:px-10 sm:py-20">
         <motion.div {...fadeUp}>
           <p className="text-sm font-medium tracking-wide text-gold uppercase">
             It's easy
           </p>
-          <h2 className="mt-2 font-display text-3xl text-cream sm:text-4xl">
-            How your voice gets in
-          </h2>
+          <p className="mx-auto mt-4 max-w-3xl font-display text-2xl leading-snug text-cream sm:text-4xl">
+            Learn the segment below, press record on your phone, sing your
+            heart out, and send it in.{' '}
+            <em className="text-gold italic">That's the whole thing.</em>
+          </p>
         </motion.div>
-        <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8 lg:gap-12">
-          {STEPS.map((step, i) => (
-            <motion.div
-              key={step.title}
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: i * 0.12 }}
-              className="flex flex-col gap-4 rounded-2xl border border-line bg-stage p-6 sm:p-7"
-            >
-              <div className="flex items-center justify-between">
-                <span className="grid size-11 place-items-center rounded-full bg-stage-soft text-gold">
-                  <step.icon className="size-5" />
-                </span>
-                <span className="font-mono text-sm text-cream-dim">
-                  {i + 1} / 3
-                </span>
-              </div>
-              <h3 className="font-display text-xl text-cream">{step.title}</h3>
-              <p className="text-cream-dim">{step.body}</p>
-            </motion.div>
-          ))}
-        </div>
       </section>
 
       {/* The guide track */}
@@ -186,8 +157,9 @@ function Home() {
 
       <footer className="border-t border-line px-5 py-10 sm:px-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-          <span className="font-display text-cream-dim">
-            Million Voice Choir · for Casa Segura 🇩🇴
+          <span className="inline-flex items-center gap-2 font-display text-cream-dim">
+            Million Voice Choir · for Casa Segura
+            <DominicanFlag className="size-4" />
           </span>
           <span className="text-sm text-cream-dim">
             Every light on this page is a voice. One of them is yours.

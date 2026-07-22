@@ -42,7 +42,7 @@ export function VoiceWall({ className }: { className?: string }) {
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           // Thin the crowd toward the top so the wall fades into darkness
-          const density = 0.25 + 0.65 * (r / rows)
+          const density = 0.35 + 0.6 * (r / rows)
           // Deterministic-ish jitter from grid position, no Math.random storms
           const h = Math.abs(Math.sin(c * 12.9898 + r * 78.233) * 43758.5453) % 1
           if (h > density) continue
@@ -70,10 +70,10 @@ export function VoiceWall({ className }: { className?: string }) {
         const a = l.base * (0.3 + 0.7 * tw)
         const color = l.warm ? '201, 119, 63' : '232, 180, 76'
         // Halo on the brightest lights so the twinkle reads from a distance
-        if (tw > 0.7) {
+        if (tw > 0.65) {
           ctx.beginPath()
-          ctx.arc(l.x, l.y, (DOT + tw) * 2.6, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${color}, ${a * 0.18})`
+          ctx.arc(l.x, l.y, (DOT + tw) * 3.4, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${color}, ${a * 0.22})`
           ctx.fill()
         }
         ctx.beginPath()
