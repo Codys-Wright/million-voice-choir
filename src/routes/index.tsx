@@ -22,19 +22,11 @@ function Home() {
       {/* Hero — the wall of voices */}
       <section className="relative flex min-h-svh flex-col overflow-hidden">
         <VoiceWall className="absolute inset-0 h-full w-full" />
-        {/* Dim pocket behind the headline so the type sits on darkness */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 55% 45% at 50% 45%, rgba(11, 14, 26, 0.92) 0%, rgba(11, 14, 26, 0.55) 55%, transparent 78%)',
-          }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to bottom, var(--color-ink) 0%, transparent 25%, transparent 60%, var(--color-ink) 100%)',
+              'linear-gradient(to bottom, var(--color-ink) 0%, transparent 35%, transparent 60%, var(--color-ink) 100%)',
           }}
         />
 
@@ -136,6 +128,50 @@ function Home() {
             This is the recording every single voice sings against.
           </p>
           <GuideTrack />
+        </motion.div>
+
+        {/* The words */}
+        <motion.div
+          {...fadeUp}
+          className="mt-8 rounded-2xl border border-line bg-stage p-7 sm:p-10"
+        >
+          <p className="text-sm font-medium tracking-wide text-gold uppercase">
+            The words
+          </p>
+          <p className="mt-4 font-display text-base text-cream-dim italic">
+            Clap along during the instrumental
+          </p>
+          <div className="mt-8 grid gap-10 sm:grid-cols-2">
+            <div>
+              <p className="text-xs font-medium tracking-widest text-gold uppercase">
+                Bridge
+              </p>
+              <p className="mt-3 font-display text-lg leading-relaxed text-cream sm:text-xl">
+                El Artista Eres Tú{' '}
+                <span className="text-base text-cream-dim">× 3</span>
+              </p>
+            </div>
+            <div>
+              <p className="text-xs font-medium tracking-widest text-gold uppercase">
+                Chorus
+              </p>
+              <p className="mt-3 font-display text-lg leading-relaxed text-cream sm:text-xl">
+                El artista eres tú, Señor
+                <br />
+                Tú eres el artista
+                <br />
+                Gran poeta, gran escritor
+                <br />
+                Pintor y concertista
+                <br />
+                De toda obra eres autor
+                <br />
+                Con tu mente infinita
+                <br />
+                El Artista eres tú, Señor
+              </p>
+            </div>
+          </div>
         </motion.div>
       </section>
 
