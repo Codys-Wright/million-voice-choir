@@ -45,27 +45,3 @@ body {
   outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
-
-/* Seek bar for the guide-track player */
-input[type="range"].seek {
-  appearance: none;
-  height: 4px;
-  border-radius: 9999px;
-  background: var(--color-line);
-  cursor: pointer;
-}
-input[type="range"].seek::-webkit-slider-thumb {
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 9999px;
-  background: var(--color-gold);
-  border: none;
-}
-input[type="range"].seek::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 9999px;
-  background: var(--color-gold);
-  border: none;
-}
