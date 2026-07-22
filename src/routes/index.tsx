@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
-import { HeartHandshake, Smartphone } from 'lucide-react'
+import { Smartphone } from 'lucide-react'
 
 import { DominicanFlag } from '#/components/DominicanFlag'
 import { GuideTrack } from '#/components/GuideTrack'
@@ -84,26 +84,6 @@ function Home() {
         </div>
       </section>
 
-      {/* The cause */}
-      <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-10 sm:py-20">
-        <motion.div
-          {...fadeUp}
-          className="flex flex-col items-start gap-6 rounded-3xl border border-line bg-stage p-7 sm:flex-row sm:items-center sm:gap-8 sm:p-10"
-        >
-          <DominicanFlag className="size-14 shrink-0 sm:size-16" />
-          <div>
-            <p className="flex items-center gap-2 text-sm font-medium tracking-wide text-gold uppercase">
-              <HeartHandshake className="size-4" />
-              Sing for Casa Segura
-            </p>
-            <p className="mt-2 max-w-3xl font-display text-xl leading-snug text-cream sm:text-2xl">
-              Just by joining us in this song, you're supporting Casa Segura
-              and helping the children of the Dominican Republic.
-            </p>
-          </div>
-        </motion.div>
-      </section>
-
       {/* It's easy */}
       <section className="mx-auto w-full max-w-5xl px-5 py-16 text-center sm:px-10 sm:py-20">
         <motion.div {...fadeUp}>
@@ -130,47 +110,45 @@ function Home() {
           <GuideTrack />
         </motion.div>
 
-        {/* The words */}
+        {/* Lyrics */}
         <motion.div
           {...fadeUp}
           className="mt-8 rounded-2xl border border-line bg-stage p-7 sm:p-10"
         >
           <p className="text-sm font-medium tracking-wide text-gold uppercase">
-            The words
+            Lyrics
           </p>
           <p className="mt-4 font-display text-base text-cream-dim italic">
             Clap along during the instrumental
           </p>
-          <div className="mt-8 grid gap-10 sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-medium tracking-widest text-gold uppercase">
-                Bridge
-              </p>
-              <p className="mt-3 font-display text-lg leading-relaxed text-cream sm:text-xl">
-                El Artista Eres Tú{' '}
-                <span className="text-base text-cream-dim">× 3</span>
-              </p>
-            </div>
-            <div>
-              <p className="text-xs font-medium tracking-widest text-gold uppercase">
-                Chorus
-              </p>
-              <p className="mt-3 font-display text-lg leading-relaxed text-cream sm:text-xl">
-                El artista eres tú, Señor
-                <br />
-                Tú eres el artista
-                <br />
-                Gran poeta, gran escritor
-                <br />
-                Pintor y concertista
-                <br />
-                De toda obra eres autor
-                <br />
-                Con tu mente infinita
-                <br />
-                El Artista eres tú, Señor
-              </p>
-            </div>
+          <div className="mt-8">
+            <p className="text-xs font-medium tracking-widest text-gold uppercase">
+              Bridge
+            </p>
+            <p className="mt-3 font-display text-lg leading-relaxed text-cream sm:text-xl">
+              El Artista Eres Tú{' '}
+              <span className="text-base text-cream-dim">× 3</span>
+            </p>
+          </div>
+          <div className="mt-8">
+            <p className="text-xs font-medium tracking-widest text-gold uppercase">
+              Chorus
+            </p>
+            <p className="mt-3 font-display text-lg leading-relaxed text-cream sm:text-xl">
+              El artista eres tú, Señor
+              <br />
+              Tú eres el artista
+              <br />
+              Gran poeta, gran escritor
+              <br />
+              Pintor y concertista
+              <br />
+              De toda obra eres autor
+              <br />
+              Con tu mente infinita
+              <br />
+              El Artista eres tú, Señor
+            </p>
           </div>
         </motion.div>
       </section>
