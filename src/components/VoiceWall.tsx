@@ -15,8 +15,8 @@ export function VoiceWall({ className }: { className?: string }) {
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    const CELL = 14 // px between lights
-    const DOT = 2.2 // base radius
+    const CELL = 16 // px between lights
+    const DOT = 2.8 // base radius
 
     let raf = 0
     let lights: Array<{
@@ -52,8 +52,8 @@ export function VoiceWall({ className }: { className?: string }) {
             x: c * CELL + (h - 0.5) * 6,
             y: r * CELL + (h2 - 0.5) * 6,
             phase: h3 * Math.PI * 2,
-            speed: 0.4 + h2 * 1.1,
-            base: 0.12 + h * 0.5,
+            speed: 0.6 + h2 * 1.6,
+            base: 0.2 + h * 0.65,
             warm: h3 > 0.85,
           })
         }
@@ -67,12 +67,18 @@ export function VoiceWall({ className }: { className?: string }) {
       const time = t / 1000
       for (const l of lights) {
         const tw = reduced ? 0.5 : 0.5 + 0.5 * Math.sin(l.phase + time * l.speed)
-        const a = l.base * (0.35 + 0.65 * tw)
+        const a = l.base * (0.3 + 0.7 * tw)
+        const color = l.warm ? '201, 119, 63' : '232, 180, 76'
+        // Halo on the brightest lights so the twinkle reads from a distance
+        if (tw > 0.7) {
+          ctx.beginPath()
+          ctx.arc(l.x, l.y, (DOT + tw) * 2.6, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${color}, ${a * 0.18})`
+          ctx.fill()
+        }
         ctx.beginPath()
-        ctx.arc(l.x, l.y, DOT + tw * 0.8, 0, Math.PI * 2)
-        ctx.fillStyle = l.warm
-          ? `rgba(201, 119, 63, ${a})`
-          : `rgba(232, 180, 76, ${a})`
+        ctx.arc(l.x, l.y, DOT + tw * 1.1, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${color}, ${a})`
         ctx.fill()
       }
       if (!reduced) raf = requestAnimationFrame(draw)

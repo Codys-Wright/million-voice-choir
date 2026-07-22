@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
-import { Headphones, Upload, Video } from 'lucide-react'
+import { Headphones, HeartHandshake, Smartphone, Upload, Video } from 'lucide-react'
 
 import { GuideTrack } from '#/components/GuideTrack'
 import { UploadDrop } from '#/components/UploadDrop'
@@ -19,12 +19,12 @@ const STEPS = [
   {
     icon: Headphones,
     title: 'Listen',
-    body: 'Play the guide track below until the melody sits in your ear. Download it so you can sing with it anywhere.',
+    body: 'Play the guide video below until the melody sits in your ear. Download it so you can sing with it anywhere.',
   },
   {
     icon: Video,
     title: 'Record',
-    body: 'Film yourself singing along — phone camera is perfect. Wear headphones or let the track play out loud; both work.',
+    body: 'Film yourself singing along — your phone camera is perfect. Wear headphones or let the track play out loud; both work.',
   },
   {
     icon: Upload,
@@ -43,12 +43,12 @@ function Home() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, var(--color-ink) 0%, transparent 35%, transparent 60%, var(--color-ink) 100%)',
+              'linear-gradient(to bottom, var(--color-ink) 0%, transparent 30%, transparent 55%, var(--color-ink) 100%)',
           }}
         />
 
-        <header className="relative z-10 flex items-center justify-between px-6 py-6 sm:px-10">
-          <span className="font-display text-lg tracking-wide text-cream">
+        <header className="relative z-10 flex items-center justify-between px-5 py-5 sm:px-10 sm:py-6">
+          <span className="font-display text-base tracking-wide text-cream sm:text-lg">
             Million Voice Choir
           </span>
           <a
@@ -59,53 +59,89 @@ function Home() {
           </a>
         </header>
 
-        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-24 text-center">
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-20 text-center sm:pb-24">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="max-w-4xl font-display text-5xl leading-[1.05] font-medium text-cream sm:text-7xl md:text-8xl"
+            className="max-w-5xl font-display text-[2.75rem] leading-[1.05] font-medium text-cream sm:text-7xl md:text-8xl"
           >
-            One song.
+            A million voices,
             <br />
-            <em className="font-light text-gold italic">A million voices.</em>
+            <em className="font-light text-gold italic">singing one song.</em>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
-            className="mt-6 max-w-xl text-lg text-cream-dim"
+            className="mt-6 max-w-2xl text-base text-cream-dim sm:text-lg"
           >
-            Record yourself singing along to one shared song. Every take joins
-            a single, world-sized choir.
+            Record yourself singing along to one shared song, right on your
+            phone. Every take joins a single, world-sized choir — and supports
+            the children of the Dominican Republic. 🇩🇴
           </motion.p>
-          <motion.a
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            href="#join"
-            className="mt-10 rounded-full bg-gold px-8 py-3.5 font-medium text-ink transition hover:bg-gold-soft"
+            className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
           >
-            Add your voice
-          </motion.a>
+            <a
+              href="#join"
+              className="rounded-full bg-gold px-8 py-3.5 font-medium text-ink transition hover:bg-gold-soft"
+            >
+              Add your voice
+            </a>
+            <span className="inline-flex items-center gap-2 text-sm text-cream-dim">
+              <Smartphone className="size-4 text-gold" />
+              All you need is your smartphone
+            </span>
+          </motion.div>
         </div>
       </section>
 
+      {/* The cause */}
+      <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-10 sm:py-20">
+        <motion.div
+          {...fadeUp}
+          className="flex flex-col items-start gap-6 rounded-3xl border border-line bg-stage p-7 sm:flex-row sm:items-center sm:gap-8 sm:p-10"
+        >
+          <span className="grid size-14 shrink-0 place-items-center rounded-full bg-stage-soft text-3xl sm:size-16">
+            🇩🇴
+          </span>
+          <div>
+            <p className="flex items-center gap-2 text-sm font-medium tracking-wide text-gold uppercase">
+              <HeartHandshake className="size-4" />
+              Sing for Casa Segura
+            </p>
+            <p className="mt-2 max-w-3xl font-display text-xl leading-snug text-cream sm:text-2xl">
+              Just by joining us in this song, you're supporting Casa Segura
+              and helping the children of the Dominican Republic.
+            </p>
+          </div>
+        </motion.div>
+      </section>
+
       {/* How it works — a real sequence, so the numbers mean something */}
-      <section className="mx-auto max-w-5xl px-6 py-24 sm:px-10">
-        <motion.h2 {...fadeUp} className="font-display text-3xl text-cream sm:text-4xl">
-          How your voice gets in
-        </motion.h2>
-        <div className="mt-12 grid gap-10 sm:grid-cols-3">
+      <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-10 sm:py-20">
+        <motion.div {...fadeUp}>
+          <p className="text-sm font-medium tracking-wide text-gold uppercase">
+            It's easy
+          </p>
+          <h2 className="mt-2 font-display text-3xl text-cream sm:text-4xl">
+            How your voice gets in
+          </h2>
+        </motion.div>
+        <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8 lg:gap-12">
           {STEPS.map((step, i) => (
             <motion.div
               key={step.title}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: i * 0.12 }}
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-4 rounded-2xl border border-line bg-stage p-6 sm:p-7"
             >
-              <div className="flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-full bg-stage-soft text-gold">
+              <div className="flex items-center justify-between">
+                <span className="grid size-11 place-items-center rounded-full bg-stage-soft text-gold">
                   <step.icon className="size-5" />
                 </span>
                 <span className="font-mono text-sm text-cream-dim">
@@ -120,7 +156,7 @@ function Home() {
       </section>
 
       {/* The guide track */}
-      <section className="mx-auto max-w-3xl px-6 py-12 sm:px-10">
+      <section className="mx-auto w-full max-w-5xl px-5 py-16 sm:px-10 sm:py-20">
         <motion.div {...fadeUp}>
           <h2 className="font-display text-3xl text-cream sm:text-4xl">
             Learn the song
@@ -133,7 +169,10 @@ function Home() {
       </section>
 
       {/* Upload */}
-      <section id="join" className="mx-auto max-w-3xl scroll-mt-12 px-6 py-24 sm:px-10">
+      <section
+        id="join"
+        className="mx-auto w-full max-w-5xl scroll-mt-12 px-5 py-16 sm:px-10 sm:py-20"
+      >
         <motion.div {...fadeUp}>
           <h2 className="font-display text-3xl text-cream sm:text-4xl">
             Add your voice
@@ -145,9 +184,11 @@ function Home() {
         </motion.div>
       </section>
 
-      <footer className="border-t border-line px-6 py-10 sm:px-10">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
-          <span className="font-display text-cream-dim">Million Voice Choir</span>
+      <footer className="border-t border-line px-5 py-10 sm:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+          <span className="font-display text-cream-dim">
+            Million Voice Choir · for Casa Segura 🇩🇴
+          </span>
           <span className="text-sm text-cream-dim">
             Every light on this page is a voice. One of them is yours.
           </span>
