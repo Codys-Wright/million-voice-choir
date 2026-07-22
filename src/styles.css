@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces/index.css";
+@import "@fontsource-variable/albert-sans/index.css";
+
+@theme {
+  --font-display: "Fraunces Variable", "Georgia", serif;
+  --font-sans: "Albert Sans Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Stage-dark palette: a crowd holding up lights in an arena. */
+  --color-ink: #0b0e1a; /* house lights down */
+  --color-stage: #131830; /* risers */
+  --color-stage-soft: #1b2140; /* raised panel */
+  --color-gold: #e8b44c; /* candlelight */
+  --color-gold-soft: #f4d78f;
+  --color-ember: #c9773f; /* warm low light */
+  --color-cream: #f2ede2; /* text */
+  --color-cream-dim: #a6a8bc; /* muted text */
+  --color-line: #262c4a; /* hairlines */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Seek bar for the guide-track player */
+input[type="range"].seek {
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--color-line);
+  cursor: pointer;
+}
+input[type="range"].seek::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--color-gold);
+  border: none;
+}
+input[type="range"].seek::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--color-gold);
+  border: none;
+}
